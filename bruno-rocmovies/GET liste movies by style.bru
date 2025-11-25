@@ -1,0 +1,19 @@
+meta {
+  name: GET liste movies by style
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{url}}movies?style=SF
+  body: none
+  auth: inherit
+}
+
+params:query {
+  style: SF
+}
+
+settings {
+  encodeUrl: true
+}

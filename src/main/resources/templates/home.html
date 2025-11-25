@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RocMovies - Accueil</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header th:insert="~{fragment :: header}"></header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>🎬 Découvrez notre collection</h2>
+        <p>Explorez notre vaste collection de films et trouvez votre prochain coup de cœur !</p>
+
+        <!-- Filter by style -->
+        <section class="filter-section">
+            <form th:action="@{/films/filter}" method="get">
+                <label for="style">🎭 Filtrer par style :</label>
+                <select id="style" name="style">
+                    <option value="">Tous les styles</option>
+                    <option th:each="style : ${styles}" th:value="${style.styleName}" th:text="${style.styleName}">Style</option>
+                </select>
+                <button type="submit">🔍 Filtrer</button>
+            </form>
+        </section>
+
+        <!-- Movies List -->
+        <div th:insert="~{fragment :: moviesList}"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer th:insert="~{fragment :: footer}"></footer>
+</body>
+</html>

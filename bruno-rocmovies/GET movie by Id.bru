@@ -1,0 +1,19 @@
+meta {
+  name: GET movie by Id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{url}}movie/3
+  body: multipartForm
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 1
+}
+
+settings {
+  encodeUrl: true
+}

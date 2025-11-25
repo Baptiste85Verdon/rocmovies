@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films filtrés - RocMovies</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header th:insert="~{fragment :: header}"></header>
+
+    <main>
+        <h2>🎭 Résultats du filtre</h2>
+
+        <!-- Filter by style -->
+        <section class="filter-section">
+            <form th:action="@{/films/filter}" method="get" class="filter-form">
+                <label for="style">🎬 Filtrer par style :</label>
+                <select id="style" name="style" class="form-select">
+                    <option value="">Tous les styles</option>
+                    <option th:each="style : ${styles}" th:value="${style.styleName}" th:selected="${style.styleName == selectedStyle}" th:text="${style.styleName}">Style</option>
+                </select>
+                <button type="submit" class="btn btn-primary">🔍 Filtrer</button>
+            </form>
+        </section>
+
+        <div th:if="${error}" class="alert alert-error">
+            <span th:text="${error}">Erreur</span>
+        </div>
+        <div th:if="${info}" class="alert alert-info">
+            <span th:text="${info}">Info</span>
+        </div>
+
+        <div th:if="${movies != null and #lists.isEmpty(movies) == false}" class="movies-results">
+            <p class="results-count">🎬 Résultats trouvés : <span th:text="${#lists.size(movies)}">0</span> film(s)</p>
+            <!-- Movies List -->
+            <div th:insert="~{fragment :: moviesList}"></div>
+        </div>
+
+        <a th:href="@{/home}" class="back-link">Retour à l'accueil</a>
+    </main>
+
+    <footer th:insert="~{fragment :: footer}"></footer>
+</body>
+</html>

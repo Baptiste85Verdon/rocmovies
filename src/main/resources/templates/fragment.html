@@ -1,0 +1,19 @@
+<div th:fragment="header">
+    <h1>Bienvenu sur RocMovies</h1>
+    <p>Découvrez les dernières nouveautés et les classiques du cinéma</p>
+</div>
+
+<div th:fragment="footer">
+    <p>&copy; 2025 RocMovies. Tous droits réservés.</p>
+</div>
+
+<div th:fragment="moviesList">
+    <div th:each="movie : ${movies}" class="movie-card">
+        <h3>
+            <a th:href="@{/film/{id}(id=${movie.movieId})}" th:text="${movie.title}">Titre du film</a>
+        </h3>
+        <p><strong>🎭 Style:</strong> <span th:text="${movie.style.styleName}">Style du film</span></p>
+        <p><strong>📅 Année:</strong> <span th:text="${movie.productionYear}">Année de production</span></p>
+        <p><strong>🏷️ Référence:</strong> <span th:text="${movie.reference}">Référence du film</span></p>
+    </div>
+</div>

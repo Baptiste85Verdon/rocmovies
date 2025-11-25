@@ -1,0 +1,30 @@
+meta {
+  name: POST add movie
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}movie/add
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "idMovie" : 10,
+    "title" : "Test",
+    "productionYear" : 1998,
+    "style": {
+      "styleId":1
+    },
+    "reference": "REF-123456",
+    "productor": {
+      "productorId":1
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

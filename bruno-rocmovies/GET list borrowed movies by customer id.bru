@@ -1,0 +1,15 @@
+meta {
+  name: GET list borrowed movies by customer id
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{url}}customers/1/borrows-customer
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

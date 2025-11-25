@@ -1,0 +1,28 @@
+meta {
+  name: POST add borrow to customer
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{url}}customers/1/borrow
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "date": "2025-11-25",
+    "status": "EN_COURS",
+    "movie": {
+      "movieId": 2
+    },
+    "customer": {
+      "customerId": 1
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+}
