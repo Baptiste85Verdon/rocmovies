@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RocMovies - Accueil</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Home</title>
+    <!-- Google Fonts  -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <!-- Header -->
-    <header th:insert="~{fragment :: header}"></header>
+    <div th:insert="~{fragment :: header}"></div>
 
     <!-- Main Content -->
     <main>
-        <h2>🎬 Découvrez notre collection</h2>
-        <p>Explorez notre vaste collection de films et trouvez votre prochain coup de cœur !</p>
-
+        <h2>Accueil de RocMovies</h2>
+        <p>Découvrez les dernières nouveautés et les classiques du cinéma.</p>
         <!-- Filter by style -->
         <section class="filter-section">
             <form th:action="@{/films/filter}" method="get">
-                <label for="style">🎭 Filtrer par style :</label>
+                <label for="style">Filtrer par style :</label>
                 <select id="style" name="style">
-                    <option value="">Tous les styles</option>
-                    <option th:each="style : ${styles}" th:value="${style.styleName}" th:text="${style.styleName}">Style</option>
+                    <option value="">Tous</option>
+                    <option value="SF">SF</option>
+                    <option value="DRAME">DRAME</option>
+                    <option value="THRILLER">THRILLER</option>
+                    <option value="ACTION">ACTION</option>
                 </select>
-                <button type="submit">🔍 Filtrer</button>
+                <button type="submit">Filtrer</button>
             </form>
         </section>
 
@@ -37,6 +39,6 @@
     </main>
 
     <!-- Footer -->
-    <footer th:insert="~{fragment :: footer}"></footer>
+    <div th:insert="~{fragment :: footer}"></div>
 </body>
 </html>
